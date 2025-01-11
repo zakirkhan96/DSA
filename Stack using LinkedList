@@ -1,0 +1,64 @@
+public class StackUsingLinkedList {
+    static class Node {
+        int data;
+        Node next;
+    
+        Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    
+    static class Stack {
+        Node head = null;
+        
+        public boolean isEmpty() {
+            return head == null;
+        }
+
+        public void Push(int data){
+            Node newNode = new Node(data);
+
+            if (isEmpty()) {
+                head = newNode;
+                return;
+            }
+
+            newNode.next = head;
+            head = newNode;
+        }
+
+        public int pop(){
+            if(isEmpty()){
+                System.out.println("Stack is Empty.");
+                return -1;
+            }
+
+            int res = head.data;
+            head = head.next;
+            return res;
+
+        }
+
+        public int peek(){
+            if (isEmpty()) {
+                System.out.println("Stack is empty.");
+                return -1;
+            }
+            return head.data;
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack s1 = new Stack();
+        s1.Push(1);
+        s1.Push(2);
+        s1.Push(3);
+        s1.Push(4);
+        System.out.println(s1.pop());
+        System.out.println(s1.pop());
+        System.out.println(s1.pop());
+        System.out.println(s1.pop());
+        System.out.println(s1.pop());
+    }
+}
