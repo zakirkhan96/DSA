@@ -1,0 +1,55 @@
+public class StackusingArray {
+    int[] arr;
+    int size;
+    int index;
+
+    StackusingArray(int size){
+        this.size = size;
+        arr = new int[size];
+        index = -1;
+    }
+
+    public boolean isEmpty(){
+        return index == -1;
+    }
+
+    public void Push(int data){
+        if (isEmpty()) {
+            index++;
+            arr[index] = data;
+        }
+        index++;
+        arr[index] = data;
+    }
+
+    public int peek(){
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1;
+        }
+
+        return arr[index];
+    }
+
+    public int pop(){
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1;
+        }
+
+        int res = arr[index];
+        index--;
+        return res;
+    }
+
+    public static void main(String[] args) {
+        StackusingArray s2 = new StackusingArray(4);
+        s2.Push(1);
+        s2.Push(2);
+        s2.Push(3);
+        System.out.println(s2.pop());
+        System.out.println(s2.pop());
+        System.out.println(s2.pop());
+        System.out.println(s2.pop());
+    }
+}
