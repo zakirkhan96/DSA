@@ -1,0 +1,136 @@
+public class CircularLinkedList {
+    class Node{
+        int data;
+        Node next;
+
+        Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public class CLL {
+        Node head = null;
+        Node tail = null;
+
+        public boolean isEmpty(){
+            return head == null && tail == null;
+        }
+
+        public void addFromTail(int data) {
+            Node newNode = new Node(data);
+        
+            if (isEmpty()) {
+                head = newNode;
+                tail = newNode;
+                tail.next = head; 
+                return; 
+            }
+        
+            tail.next = newNode;
+            tail = newNode;
+            tail.next = head; 
+        }
+        
+        public void addFromHead(int data){
+            Node newNode = new Node(data);
+
+            if (isEmpty()) {
+                head = tail = newNode;
+                tail.next = head;
+                return;
+            }
+
+            if (head == tail) {
+                newNode.next = head;
+                head = newNode;
+                tail.next = head;
+                return;
+            }
+
+            newNode.next = head;
+            head = newNode;
+            tail.next = head;
+        }
+
+        public void searchList(int d){
+            Node c = head;
+            do {
+                if (c.data == d) {
+                    System.out.println("Node found: " + c.data);
+                    return;
+                }
+                c = c.next;
+            } while (c != head);
+            System.out.println("Node not found in list.");
+        }
+
+        public void removeFromTail(){
+            if (isEmpty()) {
+                System.out.println("List is empty.");
+                return;
+            }
+
+            if (head == tail) {
+                head = tail = null;
+                return;
+            }
+
+            Node lastNode = head.next;
+            Node secLastNode = null;
+
+            while (lastNode.next != head) {
+                secLastNode = lastNode;
+                lastNode = secLastNode.next;
+            }
+            tail = secLastNode;
+            tail.next = head;
+        }
+
+        public void removeFromHead(){
+            if (isEmpty()) {
+                System.out.println("List is empty.");
+                return;
+            }
+
+            if (head == tail) {
+                head = tail = null;
+                return;
+            }
+
+            head = head.next;
+            tail.next = head;
+        }
+
+        public void printList() {
+            if (head == null) {
+                System.out.println("Linked List is empty");
+                return;
+            }
+    
+            Node c = head;
+            do {
+                System.out.print(c.data + " -> ");
+                c = c.next;
+            } while (c != head);
+            System.out.println("head"); 
+        }
+
+    }
+
+    public static void main(String[] args) {
+        CircularLinkedList.CLL list = new CircularLinkedList().new CLL();
+        
+        list.addFromHead(10);
+        list.addFromHead(15);
+        list.addFromTail(20);
+        list.printList();
+        list.removeFromTail();
+        list.printList();
+        list.removeFromHead();
+        list.printList();
+        list.removeFromHead();
+        list.printList();
+
+    }
+}
