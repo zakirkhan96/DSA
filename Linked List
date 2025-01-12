@@ -1,0 +1,117 @@
+public class LL {
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head;
+
+    public void addFirst(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public void addLast(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node c = head;
+        while (c.next != null) { 
+            c = c.next;
+        }
+
+        c.next = newNode;
+    }
+
+    public void searchList(int d){
+        Node c = head;
+        while (c != null) {
+            if (c.data == d) {
+                System.out.println(c.data);
+                return;
+            }
+            c = c.next;
+        }
+        System.out.println("Node not found in list.");
+    }
+
+    public void printList() {
+        if (head == null) {
+            System.out.println("Linked List is empty");
+            return;
+        }
+
+        Node c = head;
+        while (c != null) {
+            System.out.print(c.data + " -> ");
+            c = c.next;
+        }
+        System.out.println("null"); 
+    }
+
+    public void removeFromFirst(){
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        head = head.next;
+    }
+
+    public void removeFromLast(){
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node lastNode = head.next;
+        Node secLastNode = head;
+        while (lastNode.next != null) {
+            lastNode = lastNode.next;
+            secLastNode = secLastNode.next;
+        }
+
+        secLastNode.next = null;
+    }
+
+    public static void main(String[] args) {
+        LL list = new LL();
+        list.addFirst(5);
+        list.addFirst(9);
+        list.addLast(7);
+        list.addLast(4);
+        list.printList();
+        list.searchList(7);
+        list.removeFromFirst();
+        list.printList();
+        list.removeFromLast();
+        list.printList();
+    }
+}
