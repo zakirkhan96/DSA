@@ -1,4 +1,4 @@
-public class StackusingArray {
+public class StackUsingArray {
     int[] arr;
     int size;
     int index;
