@@ -83,15 +83,18 @@ public class CircularQueueUsingLinkedList {
         queue.enqueue("a");
         queue.enqueue("Linked-List+queue.");
         queue.printQueue();
+
         System.out.println(queue.peek());
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
         System.out.println("Queue after removing:");
         queue.printQueue();
+
         System.out.println("Front in queue now: " + queue.peek());
         queue.enqueue("ba");
         queue.enqueue("bye.");
         System.out.println("Queue after adding more people:");
         queue.printQueue();
+        
     }
 }
